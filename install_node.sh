@@ -229,7 +229,7 @@ chmod +x "${node_repo_dir}/"*.sh >> "${logfile}" 2>&1
 # Health Monitor & Automatic Update Crontab Configuration
 echo "Create and import health monitor & automatic update crontab"
 echo "*/3 * * * * ${node_repo_dir}/health_monitor.sh >> /var/log/pchain_monitor.log 2>&1" >> "/tmp/newCrontab"
-echo "*/15 * * * * ${node_repo_dir}/automatic_update.sh >> /var/log/pchain_monitor.log 2>&1" >> "/tmp/newCrontab"
+echo "*/11 * * * * ${node_repo_dir}/automatic_update.sh >> /var/log/pchain_monitor.log 2>&1" >> "/tmp/newCrontab"
 crontab -u root "/tmp/newCrontab" >> "${logfile}" 2>&1
 rm "/tmp/newCrontab" >> "${logfile}" 2>&1
 
