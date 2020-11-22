@@ -32,7 +32,7 @@ log "Local version is ${local_version}, latest version is ${latest_version}"
 url="$(echo ${version_info} | jq --raw-output '.data[0].url')"
 
 if [[ "${latest_version}" > "${local_version}" ]]; then # Lexicographical comparison intended
-  log "Updating from version ${local_version} to ${latest_version}"
+  log "Start update from version ${local_version} to ${latest_version}"
   url="$(echo ${version_info} | jq --raw-output '.data[0].url')"
   filename_tar="$(basename ${url})"
   filename="${filename_tar%.*}"
@@ -48,7 +48,7 @@ if [[ "${latest_version}" > "${local_version}" ]]; then # Lexicographical compar
   rm -R "${pchain_dir}/log/"* "${pchain_dir}/bin/log/"* "${HOME}/log/"* 2>/dev/null
 
   log "Downloading ${url}"
-  if ! wget -q --show-progress "${url}" -P "/tmp/"; then
+  if ! wget -q "${url}" -P "/tmp/"; then
     log "Error downloading '${url}' > exiting"
     exit 1
   fi
@@ -59,6 +59,7 @@ if [[ "${latest_version}" > "${local_version}" ]]; then # Lexicographical compar
     exit 1
   fi
 
+  log "Update PCHAIN binary"
   if ! mv "/tmp/${filename}/pchain" "${pchain_dir}/bin/"; then
     log "Error moving '/tmp/${filename}/pchain' to '${pchain_dir}/bin/' > exiting"
     exit 1
