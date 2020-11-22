@@ -83,7 +83,7 @@ fi
 
 log "Stopping PCHAIN again as a precaution"
 if ! stop_pchain; then
-  log "Cannot stop pchain.service > exiting"  
+  log "Cannot stop pchain.service > exiting"
   exit 1
 fi
 

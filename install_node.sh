@@ -43,7 +43,7 @@ if [[ "$(whoami)" != "root" ]]; then
   exit 1
 fi
 
-# Create a new user account and add it to necessary groups 
+# Create a new user account and add it to necessary groups
 echo "Current username is 'root'"
 echo "For security reasons it is highly recommended to create an additional user to operate your node."
 echo "The node itself will still run under the 'root' user."
@@ -68,7 +68,7 @@ fi
 
 if ! id "${new_username}" > /dev/null 2>&1; then
   echo "Creating user '$new_username'"
-  useradd -m -p $(openssl passwd -1 ${new_password}) -s /bin/bash -G sudo "${new_username}" >> $logfile 2>&1  
+  useradd -m -p $(openssl passwd -1 ${new_password}) -s /bin/bash -G sudo "${new_username}" >> $logfile 2>&1
 fi
 
 echo "Adding user '${new_username}' to the 'sudo' group"

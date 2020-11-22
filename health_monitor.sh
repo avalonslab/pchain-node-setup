@@ -74,7 +74,7 @@ for chain_id in "${chain_ids[@]}"; do
 
   current_block_height="$(curl -X POST --silent --data '{"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", true],"id":1}' -H 'content-type:application/json;' ${rpc_url} | jq --raw-output '.result.number')"
   current_block_height_dec="$((current_block_height))"
-  if (( current_block_height_dec > 0 )) ; then
+  if (( current_block_height_dec > 0 )); then
     log "[${chain_id}] Current Block Height: ${current_block_height_dec}"
 
     if [[ -e "${data_dir}/${chain_id}/old_height" ]]; then
