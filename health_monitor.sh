@@ -27,7 +27,7 @@ restart_service() {
 }
 echo
 
-# Is automatic update running?
+# Exit if automatic update is running
 autoupdate_running="$(ps -ax | grep automatic_update.sh | wc -l)"
 if (( autoupdate_running > 1 )); then
   log "[Health Monitor] Automatic Update is running > exiting"
