@@ -3,7 +3,7 @@
 ### Install a Node
 Log as 'root' user and execute the following command:
 ```
-bash <(wget -qO- https://raw.githubusercontent.com/avalonslab/int-node-setup/main/install_node.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/avalonslab/pchain-node-setup/main/install_node.sh)
 ```
 ### Maintenance
 #### View Log File
