@@ -1,7 +1,7 @@
 # PCHAIN Node Setup for Debian and Ubuntu systems
 
 ### Install a Node
-Log as 'root' user and execute the following command:
+Login as 'root' user and execute the following command:
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/avalonslab/pchain-node-setup/main/install_node.sh)
 ```
