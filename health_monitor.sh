@@ -114,6 +114,7 @@ for chain_id in "${chain_ids[@]}"; do
   else
     log "[${chain_id}] Miner Status: Is NOT mining"
   fi
+  echo
 done
 
 hdd="$(df -Ph | sed s/%//g | awk '{ if($5 > 90 ) print $0;}' | wc -l)"
