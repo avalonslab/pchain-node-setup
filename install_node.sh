@@ -204,7 +204,7 @@ ExecStart=${pchain_dir}/bin/pchain \
 --rpcapi=eth,web3,admin,tdm,miner,personal,chain,txpool,del \
 --rpcport ${rpc_port} \
 --gcmode=full \
---verbosity 3 \
+--verbosity 2 \
 --bootnodes enode://5d867a49995ce5939324ce110d9e21c5396ca919002ea2063735ea164fc3401cb5ffb74b976406807929c8e179bf00fe9b3df4f3d680691bcc463a115735741d@13.49.131.60:30308,enode://cddbf23fdcda09dfb7d160b998da2807cc4d5138881bba6206bdbd5e4c30f70af412d023693cfdc51fce9d150aaac694e3d408623a8ccc0c226c8f55c9410a6f@15.207.188.58:30308,enode://8b1234cf208657da6a67ce2a38cf1c1fb7e8b41220ccecb8775bc60b11e6f329214624b8485b1cdb9ae5c13ff405dd4d9226391edac9e45f536a0add4df1ad6a@52.25.235.47:30308 \
 ${child_arg}
 Restart=always
