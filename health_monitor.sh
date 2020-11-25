@@ -35,8 +35,7 @@ if (( autoupdate_running > 1 )); then
 fi
 
 # Checking for BAD BLOCK
-# Temporary changed '########## BAD BLOCK #########' to 'Synchronisation failed'
-badblock_num="$(journalctl -u pchain.service -n 100 | grep "Synchronisation failed" | wc -l)"
+badblock_num="$(journalctl -u pchain.service -n 100 | grep "########## BAD BLOCK #########" | wc -l)"
 if (( badblock_num > 0 )); then
   log "[Health Monitor] ########## BAD BLOCK ######### detected, please resync your node > exiting"
   exit 1
