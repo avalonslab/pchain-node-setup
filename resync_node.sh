@@ -66,6 +66,10 @@ if ! tar -cvf "${backup_file}" $(find ${data_dir} -name "UTC*" -or -name "nodeke
 fi
 
 # Blockchain snapshot
+if [[ -d "${data_dir}/child_0" ]]; then
+  snapshot="${snapshot_child0}"
+fi
+
 snapshot_tar="$(basename ${snapshot})"
 if [[ -f "/tmp/${snapshot_tar}" ]]; then
   rm "/tmp/${snapshot_tar}"
