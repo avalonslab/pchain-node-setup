@@ -15,7 +15,6 @@ log() {
   echo "[$(date --rfc-3339=seconds)] [Automatic Update] $*"
 }
 
-echo
 if [[ "${state}" != "success" ]]; then
   log "Cannot fetch version info from 'https://api.pchain.org/getLastVersion' > exiting"
   exit 1
