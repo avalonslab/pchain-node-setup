@@ -25,7 +25,6 @@ restart_service() {
     exit 1
   fi
 }
-echo
 
 # Exit if automatic update is running
 autoupdate_running="$(ps -ax | grep automatic_update.sh | wc -l)"
