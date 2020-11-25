@@ -14,7 +14,6 @@ state="$(echo ${version_info} | jq --raw-output '.result')"
 log() {
   echo "[$(date --rfc-3339=seconds)] [Automatic Update] $*"
 }
-echo
 
 if [[ "${state}" != "success" ]]; then
   log "Cannot fetch version info from 'https://api.pchain.org/getLastVersion' > exiting"
