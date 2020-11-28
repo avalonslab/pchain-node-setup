@@ -116,6 +116,16 @@ if [[ ! -x "$(command -v jq)" ]]; then
   apt install jq -y >> "${logfile}" 2>&1
 fi
 
+if [[ ! -x "$(command -v curl)" ]]; then
+  echo "'curl' not found > installing"
+  apt install curl -y >> "${logfile}" 2>&1
+fi
+
+if [[ ! -x "$(command -v wget)" ]]; then
+  echo "'wget' not found > installing"
+  apt install wget -y >> "${logfile}" 2>&1
+fi
+
 if [[ ! -x "$(command -v git)" ]]; then
   echo "'git' not found > installing"
   apt install git -y >> "${logfile}" 2>&1
