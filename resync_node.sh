@@ -107,6 +107,8 @@ if ! tar -xvf "${backup_file}" -C "/"; then
   log "Error restoring your node config > exiting"
 fi
 
+rm -R /run/log/ > /dev/null 2>&1
+
 if ! systemctl start pchain.service; then
   log "Cannot start pchain.service"
 fi
