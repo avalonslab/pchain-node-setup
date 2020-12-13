@@ -34,22 +34,19 @@ if (( log_size > 100000 )); then
 fi
 
 # Exit if health monitor is running
-healthmonitor_running="$(ps -ax | grep health_monitor.sh | wc -l)"
-if (( healthmonitor_running > 2 )); then
-  log "[Health Monitor] Health Monitor is running > exiting"
+if [[ "$(pidof -x $(basename $0) -o %PPID)" ]]; then
+  log "[Health Monitor] Health Monitor is already running > exiting"
   exit 0
 fi
 
 # Exit if automatic update is running
-autoupdate_running="$(ps -ax | grep automatic_update.sh | wc -l)"
-if (( autoupdate_running > 1 )); then
-  log "[Health Monitor] Automatic Update is running > exiting"
+if [[ "$(pidof -x automatic_update.sh -o %PPID)" ]]; then
+  log "[Health Monitor] Automatic Update is already running > exiting"
   exit 0
 fi
 
 # Exit if node is resyncing
-resync_running="$(ps -ax | grep resync_node.sh | wc -l)"
-if (( resync_running > 1 )); then
+if [[ "$(pidof -x resync_node.sh -o %PPID)" ]]; then
   log "[Health Monitor] Node is resyncing > exiting"
   exit 0
 fi
