@@ -19,17 +19,38 @@ restart_service() {
 
   if systemctl restart pchain.service; then
     log "[pchain.service] Restart successful"
-    sleep 20
+    log "[pchain.service] Sleep for 360 seconds"
+    sleep 360
   else
     log "[pchain.service] Restart failure"
     exit 1
   fi
 }
 
+log_file="/var/log/pchain_monitor.log"
+log_size=$(wc -c < "${log_file}")
+if (( log_size > 100000 )); then
+  rm ${log_file}
+fi
+
+# Exit if health monitor is running
+healthmonitor_running="$(ps -ax | grep health_monitor.sh | wc -l)"
+if (( healthmonitor_running > 1 )); then
+  log "[Health Monitor] Health Monitor is running > exiting"
+  exit 0
+fi
+
 # Exit if automatic update is running
 autoupdate_running="$(ps -ax | grep automatic_update.sh | wc -l)"
 if (( autoupdate_running > 1 )); then
   log "[Health Monitor] Automatic Update is running > exiting"
+  exit 0
+fi
+
+# Exit if node is resyncing
+resync_running="$(ps -ax | grep resync_node.sh | wc -l)"
+if (( resync_running > 1 )); then
+  log "[Health Monitor] Node is resyncing > exiting"
   exit 0
 fi
 
