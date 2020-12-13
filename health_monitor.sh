@@ -19,7 +19,7 @@ restart_service() {
 
   if systemctl restart pchain.service; then
     log "[pchain.service] Restart successful"
-    log "[pchain.service] Sleep for 360 seconds"
+    log "[Health Monitor] Sleep for 360 seconds"
     sleep 360
   else
     log "[pchain.service] Restart failure"
