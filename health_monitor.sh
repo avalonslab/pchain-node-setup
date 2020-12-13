@@ -35,14 +35,14 @@ fi
 
 # Exit if health monitor is running
 healthmonitor_running="$(ps -ax | grep health_monitor.sh | wc -l)"
-if (( healthmonitor_running > 1 )); then
+if (( healthmonitor_running > 2 )); then
   log "[Health Monitor] Health Monitor is running > exiting"
   exit 0
 fi
 
 # Exit if automatic update is running
 autoupdate_running="$(ps -ax | grep automatic_update.sh | wc -l)"
-if (( autoupdate_running > 2 )); then
+if (( autoupdate_running > 1 )); then
   log "[Health Monitor] Automatic Update is running > exiting"
   exit 0
 fi
