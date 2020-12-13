@@ -21,6 +21,7 @@ restart_service() {
     log "[pchain.service] Restart successful"
     log "[Health Monitor] Sleep for 360 seconds"
     sleep 360
+    exit 0
   else
     log "[pchain.service] Restart failure"
     exit 1
